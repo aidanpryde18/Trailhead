@@ -1,0 +1,21 @@
+.container
+    .well
+        form.form-horizontal(name="signinForm")
+            fieldset
+                legend Sign In
+                .form-group
+                    label.col-md-2.control-label(for="email") Email
+                    .col-md-10
+                        input.form-control(name="email", id="email", type="email", placeholder="Email", ng-model="username", required)
+                .form-group
+                    label.col-md-2.control-label(for="password") Password
+                    .col-md-10
+                        input.form-control(name="password", id="password", type="password", placeholder="Password", ng-model="password", required)
+                .form-group
+                    .col-md-10.col-md-offset-2
+                        .pull-right
+                            button.btn.btn-primary(ng-click="signin(username, password)" ng-disabled="signupForm.$invalid") Sign In
+                            | &nbsp;
+                            a.btn.btn-default(href="/") Cancel
+
+

@@ -1,0 +1,73 @@
+//-
+    .navbar.navbar-default.navbar-inverse(ng-controller="mvNavBarLoginCtrl")
+        .container-fluid
+            .navbar-header
+                button.navbar-toggle.collapsed(data-toggle="collapse" data-target="#bs-example-navbar-collapse-1")
+                    span.sr-only Toggle navigation
+                    span.icon-bar
+                    span.icon-bar
+                    span.icon-bar
+                a.navbar-brand
+            .collapse.navbar-collapse(id="bs-example-navbar-collapse-1")
+                ul.nav.navbar-nav
+                    li.active
+                        a(href="#") Link
+                    li.dropdown
+                        a.dropdown-toggle(href="#" data-toggle="dropdown") Dropdown
+                            span.caret
+                        ul.dropdown-menu(role="menu")
+                            li
+                                a(href="#") Action
+                            li
+                                a(href="#") Another action
+                            li
+                                a(href="#") Something else here
+                            li.divider
+                            li
+                                a(href="#") Separated Link
+                            li.divider
+                            li
+                                a(href="#") One more separated link
+                ul.nav.navbar-nav.navbar-right
+                    li
+                        p.navbar-text Already Have An Account?
+                    li.dropdown
+                        a.dropdown-toggle(href="#" data-toggle="dropdown")
+                            b Login
+                            span.caret
+                            ul.dropdown(id="login-dp")
+                                li
+                                    .row
+                                        .col-md-12
+                                            form.form(role="form" method="post" action="login" id="login-nav")
+                                                .form-group
+                                                    input.form-control(placeholder="Email", ng-model="username")
+                                                .form-group
+                                                    input.form-control(type="password" placeholder="Password", ng-model="password")
+                                                .form-group
+                                                    button.btn.btn-primary(ng-click="signin(username, password)") Sign In
+                                        .bottom.text-center
+                                            a(href="/signup") New Here? Sign Up!
+
+    .navbar-right(ng-controller="mvNavBarLoginCtrl")
+        form.navbar-form(ng-hide="identity.isAuthenticated()")
+            ul.nav.navbar-nav
+                li
+                    a(href="/signup") Sign Up
+            .form-group
+                input.form-control(placeholder="Email", ng-model="username")
+            .form-group
+                input.form-control(type="password" placeholder="Password", ng-model="password")
+            button.btn.btn-primary(ng-click="signin(username, password)") Sign In
+        ul.nav.navbar-nav.navbar-right(ng-show="identity.isAuthenticated()")
+            li.dropdown
+                a.dropdown-toggle(href="", data-toggle="dropdown")
+                    | {{identity.currentUser.firstName + " " + identity.currentUser.lastName}}
+                    b.caret
+                ul.dropdown-menu
+                    li(ng-show="identity.currentUser.isAdmin()")
+                        a(href="/admin/users") User Admin
+                    li
+                        a(href="/profile") Profile
+                    li
+                        a(href="", ng-click="signout()") Sign Out

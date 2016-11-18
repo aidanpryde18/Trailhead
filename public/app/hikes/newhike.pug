@@ -1,0 +1,27 @@
+.container
+    .well
+        form.form-horizontal(name="hikeForm")
+            fieldset
+                legend New hike Information
+                .form-group
+                    label.col-md-2.control-label(for="title") Title
+                    .col-md-10
+                        input.form-control(name="title", id="title", type="text", placeholder="Title", ng-model="title", required)
+                .form-group
+                    label.col-md-2.control-label(for="date") Date
+                    .col-md-10
+                        input.form-control(name="date", id="date", type="date", placeholder="Date", ng-model="date", required)
+                .form-group
+                    label.col-md-2.control-label(for="location") Location
+                    .col-md-10
+                        input.form-control(name="location", id="location", type="text", placeholder="Location", ng-model="location", required)
+                .form-group
+                    label.col-md-2.control-label(for="description") Description
+                    .col-md-10
+                        input.form-control(name="description", id="description", type="text", placeholder="Short Description", ng-model="description", required)
+                .form-group
+                    .col-md-10.col-md-offset-2
+                        .pull-right
+                            button.btn.btn-primary(ng-click="newhike()", ng-disabled="hikeForm.$invalid") Submit
+                            | &nbsp;
+                            a.btn.btn-default(href="/") Cancel

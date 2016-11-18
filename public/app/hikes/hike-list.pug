@@ -1,0 +1,18 @@
+.container.top-padding-med
+    .pull-right
+        form.form-inline
+            .form-group
+                input.form-control(ng-model="searchText", placeholder="Filter")
+            .form-group.margin-left-med
+                select.form-control(ng-model="sortOrder", ng-options="item.value as item.text for item in sortOptions")
+    .panel.panel-success(ng-repeat="hike in hikes | filter:searchText | orderBy:sortOrder")
+        .panel-heading {{hike.title}}
+        .panel-body
+            .row
+                .col-sm-3
+                    img(src="https://www.gravatar.com/avatar/{{hike.creatorHash}}")
+                    div {{hike.creator}}
+                .col-sm-9
+                    div Location: {{hike.location}}
+                    div Date: {{hike.date | date : "MMM/dd/yyyy h:mm a"}}
+                    div(ng-if="hike.description != null") Description: {{hike.description}}

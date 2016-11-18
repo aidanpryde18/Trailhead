@@ -1,0 +1,11 @@
+.panel.panel-default
+    .panel-heading {{hike.title}}
+    .panel-body
+        .row
+            .col-md-2
+                img(src="https://www.gravatar.com/avatar/{{hike.creatorHash}}")
+                div {{hike.creator}}
+            .col-md-10
+                div Location: {{hike.location}}
+                div Date: {{hike.date | date : "MMM/dd/yyyy h:mm a"}}
+                div(ng-if="hike.description != null") Description: {{hike.description}}
